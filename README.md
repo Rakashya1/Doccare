@@ -1,214 +1,163 @@
-# DocCure - Healthcare Appointment System
+# 🩺 Doccare – Doctor Appointment & Prescription Management System
 
-DocCure is a modern healthcare appointment booking system that connects patients with doctors. The platform streamlines the process of finding doctors, booking appointments, and managing medical consultations.
-
-Live: [Demo](http://doccure.manjurulhoque.com/)
-
-## Features
-
-### For Patients
-- Search doctors by specialization, location, or name
-- View doctor profiles and availability
-- Book appointments online
-- Manage appointments (view, cancel, print)
-- Digital appointment records/patient history
-- Personal health profile management
-- View booking history and invoices
-- Submit reviews and ratings for doctors
-
-### For Doctors
-- Professional profile management
-- Schedule management
-- Appointment handling (accept, reject, complete)
-- Patient records access
-- View patient history
-- Manage consultation fees
-- Track appointments and bookings
-- Write digital prescriptions
-- View earnings and statistics
-
-### For Administrators
-- Comprehensive dashboard
-- User management (doctors & patients)
-- Appointment oversight
-- Revenue tracking and analysis
-- Advanced reporting features:
-  - Appointment analytics
-  - Revenue statistics
-  - Doctor performance metrics
-  - Monthly trends visualization
-  - Financial summaries
-- Specialization management
-- Review moderation
-- Prescription monitoring
-
-### General Features
-- User authentication and authorization
-- Responsive design
-- Secure data handling
-- Digital invoicing
-- Rating and review system
-- Interactive charts and statistics
-- Real-time data visualization
-- Role-based access control
-
-## Tech Stack
-
-### Backend
-- Python 3.8+
-- Django 5
-- Django REST Framework
-- SQLite3 (default database)
-
-### Frontend
-- HTML5, CSS3, JavaScript
-- Bootstrap 4
-- jQuery
-- Chart.js for analytics
-- HTMX for dynamic content
-- Font Awesome icons
-
-### Additional Tools
-- Pillow for image handling
-- Django Crispy Forms
-- CKEditor for rich text editing
-
-## Installation
-
-1. Clone the repository
-
-bash
-git clone https://github.com/manjurulhoque/doccure.git
-cd doccure
-
-2. Create a virtual environment
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-3. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-4. Set up the database
-```bash
-python manage.py migrate
-```
-
-5. Create a superuser
-```bash
-python manage.py createsuperuser
-```
-
-6. Load sample data (optional)
-```bash
-python manage.py loaddata fixtures/initial_data.json
-```
-
-7. Run the development server
-```bash
-python manage.py runserver
-```
-
-8. Visit http://localhost:8000 in your browser
-
-## Environment Variables
-Create a `.env` file in the project root and add:
-
-```
-SECRET_KEY=your_secret_key
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-```
-
-## Demo Users
-After loading fixtures, you can use these demo accounts:
-
-**Doctor Account:**
-- Username: doctor1
-- Password: Abcdefgh.1
-
-**Patient Account:**
-- Username: patient1
-- Password: Abcdefgh.1
-
-## Contributing
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Submit a pull request
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-For support, email support@doccure.com or create an issue in the repository.
-
-## 📸 Screenshots
-
-![Doctors Page](screenshots/home.png)
-*Home page*
-
-![Doctors Page](screenshots/doctors.png)
-*Doctors page with pagination*
-
-![Appointment review Page](screenshots/appointment-review.png)
-*Appointment review page*
-
-![Doctor profile Page](screenshots/doctor-profile.png)
-*Doctor profile page*
-
-![Doctor schedules Page](screenshots/doctor-schedules.png)
-*Doctor schedules page*
-
-![Doctor appointments Page](screenshots/doctor-appointments.png)
-*Doctor appointments*
-
-![Doctor appointments Page](screenshots/doctor-schedule-timings.png)
-*Doctor schedule timings*
-
-![Doctor add prescription Page](screenshots/add-prescription.png)
-*Doctor add prescription*
-
-![Admin dashboard Page](screenshots/admin.png)
-*Admin dashboard page*
-
-![Admin report Page](screenshots/report.png)
-*Admin report page*
-
-![Admin appointments Page](screenshots/admin-appointments.png)
-*Admin appointments page*
-
-## Conclusion
-
-DocCure aims to modernize healthcare access in Bangladesh by:
-
-1. **Simplified Booking**: Making it easy for patients to find and book appointments with qualified doctors
-2. **Digital Management**: Helping doctors manage their practice more efficiently
-3. **Better Healthcare Access**: Improving access to healthcare through technology
-4. **Secure Platform**: Ensuring patient data privacy and security
-5. **Paperless System**: Reducing paperwork through digital records
-
-### Future Improvements
-
-- Integration with video consultation
-- Mobile app development
-- SMS notifications
-- Online payment integration
-- AI-powered doctor recommendations
-- Multi-language support
-- Advanced analytics and reporting
-- Email notification system
-- Patient feedback system
-- Appointment reminder system
-
-### Project Status
-
-This project is actively maintained and open for contributions. Core features are implemented including the new reporting system, but we welcome improvements and new feature additions from the community.
+Doccare is a comprehensive web-based platform that simplifies appointment scheduling, prescription handling, and patient-doctor interaction. It features intuitive dashboards, calendar-based scheduling, and a powerful rich text editor for prescription creation.
 
 ---
-Built with ❤️ for better healthcare access
 
+## 🚀 Features
+
+- **Doctor & Patient Dashboards** — Separate interfaces with role-specific controls
+- **Appointment Booking** — Patients can book, view, and cancel appointments
+- **Prescription Management** — Doctors can issue, edit, and view prescriptions
+- **Calendar Integration** — FullCalendar-based visual schedule
+- **Rich Text Editing** — CKEditor 4 for notes and prescriptions
+- **Notifications** — In-app alerts for appointments and updates
+- **Responsive UI** — Works seamlessly across all devices
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Backend** | Django (Python) |
+| **Frontend** | HTML, CSS, JavaScript, jQuery |
+| **Editor** | [CKEditor 4](https://ckeditor.com/ckeditor-4/) |
+| **Calendar** | [FullCalendar](https://fullcalendar.io/) |
+| **Charts** | Morris.js |
+| **UI Plugins** | Select2, Fancybox, Slick Carousel |
+
+---
+
+## 📁 Directory Structure
+
+```plaintext
+doccare/
+├── static/
+│   ├── assets/
+│   │   ├── css/        → Stylesheets
+│   │   ├── js/         → JavaScript files
+│   │   └── plugins/    → FullCalendar, Fancybox, etc.
+│   ├── ckeditor/       → CKEditor 4 and its plugins
+│   └── dashboard/      → Admin and doctor dashboards
+├── templates/          → HTML views
+├── media/              → Uploaded files
+└── requirements.txt    → Python dependencies
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- Python 3.8+
+- pip (Python package manager)
+- Virtual environment (recommended)
+
+### Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/doccare.git
+   cd doccare
+   ```
+
+2. **Set Up Virtual Environment**
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate virtual environment
+   # Windows
+   venv\Scripts\activate
+   # macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Database Setup**
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Start Development Server**
+   ```bash
+   python manage.py runserver
+   ```
+
+6. **Access the Application**
+   
+   Open your browser and navigate to: [http://localhost:8000/](http://localhost:8000/)
+
+---
+
+## 👤 User Roles
+
+### Doctors
+- Log in to access doctor dashboard
+- View patient history and medical records
+- Manage appointments and schedules
+- Write and manage prescriptions
+
+### Patients
+- Register for new account
+- Book appointments with available doctors
+- View prescription history
+- Manage personal health records
+
+### Admins (Optional)
+- Manage system-wide settings
+- Oversee user accounts and permissions
+- Monitor system data and analytics
+
+---
+
+## 📦 Dependencies & Licenses
+
+### Third-Party Libraries
+- **CKEditor 4** — GPL, LGPL, or MPL License
+- **FullCalendar** — MIT License
+- **Morris.js** — BSD License
+- **Select2** — MIT License
+- **Fancybox** — GPLv3 License
+- **Slick Carousel** — MIT License
+
+### Backend Dependencies
+- **Django** — BSD License
+- **Python** — Python Software Foundation License
+
+
+---
+
+## 🛡️ Production Deployment
+
+For production environments, consider the following:
+
+- **Environment Variables**: Use `.env` files with `python-decouple` for sensitive data
+- **Database**: Configure PostgreSQL or MySQL instead of SQLite
+- **Web Server**: Set up Nginx with Gunicorn/Uvicorn for better performance
+- **Security**: Enable HTTPS, configure CORS, and implement proper authentication
+- **Monitoring**: Set up logging and error tracking
+
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+### Third-Party License Notice
+
+Third-party libraries and plugins included in this project retain their own licenses:
+- **CKEditor 4** and its plugins: GPL, LGPL, or MPL (see `static/ckeditor/ckeditor/README.md`)
+- **FullCalendar**: MIT License
+- **Morris.js, Select2, Fancybox, and others**: See respective documentation for license details
+
+Please ensure compliance with all third-party licenses when using or distributing this project.
+
+---
 
