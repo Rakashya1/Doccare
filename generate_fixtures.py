@@ -8,121 +8,34 @@ def generate_fixtures():
     user_id = 1
     profile_id = 1
 
-    # Real Bangladeshi names
+    # Indian and generic names
     male_first_names = [
-        "Abdul",
-        "Mohammad",
-        "Ahmed",
-        "Kamal",
-        "Jamal",
-        "Rashid",
-        "Mahmud",
-        "Sajid",
-        "Rafiq",
-        "Hasan",
-        "Mehedi",
-        "Sharif",
-        "Nasir",
-        "Fahim",
-        "Rahim",
+        "Amit", "Rahul", "Vikram", "Suresh", "Ravi", "Arjun", "Sanjay", "Manish", "Deepak", "Anil"
     ]
-
     male_last_names = [
-        "Rahman",
-        "Islam",
-        "Hossain",
-        "Ahmed",
-        "Uddin",
-        "Khan",
-        "Chowdhury",
-        "Talukder",
-        "Siddique",
-        "Ali",
-        "Sheikh",
-        "Miah",
-        "Sarkar",
-        "Molla",
-        "Majumder",
+        "Sharma", "Verma", "Patel", "Singh", "Reddy", "Nair", "Gupta", "Mehra", "Joshi", "Kumar"
     ]
-
     female_first_names = [
-        "Fatima",
-        "Aisha",
-        "Nusrat",
-        "Taslima",
-        "Sabina",
-        "Nasreen",
-        "Rahima",
-        "Salma",
-        "Amina",
-        "Jasmine",
-        "Sultana",
-        "Roksana",
-        "Sadia",
-        "Nahida",
-        "Farzana",
+        "Priya", "Anjali", "Sunita", "Kavita", "Neha", "Pooja", "Asha", "Sonia", "Ritu", "Meena"
     ]
-
     female_last_names = [
-        "Begum",
-        "Khatun",
-        "Akter",
-        "Rahman",
-        "Islam",
-        "Hossain",
-        "Ahmed",
-        "Khan",
-        "Chowdhury",
-        "Sultana",
-        "Siddiqua",
-        "Jahan",
-        "Parvin",
-        "Nahar",
-        "Akhter",
+        "Sharma", "Verma", "Patel", "Singh", "Reddy", "Nair", "Gupta", "Mehra", "Joshi", "Kumari"
     ]
-
     specializations = [
-        "Cardiologist",
-        "Dermatologist",
-        "Neurologist",
-        "Pediatrician",
-        "Orthopedic Surgeon",
-        "Psychiatrist",
-        "Gynecologist",
-        "Dentist",
-        "Ophthalmologist",
-        "ENT Specialist",
+        "Cardiologist", "Dermatologist", "Neurologist", "Pediatrician", "Orthopedic Surgeon", "Psychiatrist", "Gynecologist", "Dentist", "Ophthalmologist", "ENT Specialist"
     ]
-
     cities = [
-        "Dhaka",
-        "Chittagong",
-        "Sylhet",
-        "Rajshahi",
-        "Khulna",
-        "Barisal",
-        "Rangpur",
-        "Mymensingh",
-        "Cox's Bazar",
-        "Comilla",
-        "Narayanganj",
-        "Gazipur",
+        "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata", "Pune", "Jaipur", "Lucknow"
     ]
-
-    divisions = [
-        "Dhaka",
-        "Chittagong",
-        "Sylhet",
-        "Rajshahi",
-        "Khulna",
-        "Barisal",
-        "Rangpur",
-        "Mymensingh",
+    states = [
+        "Maharashtra", "Delhi", "Karnataka", "Telangana", "Gujarat", "Tamil Nadu", "West Bengal", "Rajasthan", "Uttar Pradesh"
+    ]
+    areas = [
+        "Andheri", "Koramangala", "Banjara Hills", "Salt Lake", "Gachibowli", "Powai", "Juhu", "Malviya Nagar", "Viman Nagar", "MG Road"
     ]
 
     # Generate 15 doctors
     for i in range(1, 16):
-        # Randomly choose gender for doctor
         gender = random.choice(["male", "female"])
         if gender == "male":
             first_name = random.choice(male_first_names)
@@ -147,22 +60,21 @@ def generate_fixtures():
         }
         fixtures.append(doctor)
 
-        # Doctor Profile
         doctor_profile = {
             "model": "accounts.profile",
             "pk": profile_id,
             "fields": {
                 "user": user_id,
-                "phone": f"+880175{i:07d}",
+                "phone": f"+91{random.randint(7000000000, 9999999999)}",
                 "dob": f"{random.randint(1960, 1990)}-{random.randint(1, 12):02d}-{random.randint(1, 28):02d}",
-                "about": f"MBBS from {random.choice(['Dhaka Medical College', 'Chittagong Medical College', 'Sylhet Medical College', 'Rajshahi Medical College'])}. {random.randint(5, 20)} years of experience in {random.choice(specializations)}.",
+                "about": f"MBBS from {random.choice(['AIIMS Delhi', 'CMC Vellore', 'KEM Mumbai', 'PGI Chandigarh'])}. {random.randint(5, 20)} years of experience in {random.choice(specializations)}.",
                 "specialization": random.choice(specializations),
                 "gender": gender,
-                "address": f"House {random.randint(1, 99)}, Road {random.randint(1, 15)}, Block {random.choice(['A', 'B', 'C', 'D', 'E'])}, {random.choice(['Gulshan', 'Banani', 'Dhanmondi', 'Uttara', 'Mirpur'])}",
+                "address": f"House {random.randint(1, 99)}, {random.choice(areas)}, {random.choice(cities)}",
                 "city": random.choice(cities),
-                "state": random.choice(divisions),
-                "postal_code": f"{random.randint(1000, 9999)}",
-                "country": "Bangladesh",
+                "state": random.choice(states),
+                "postal_code": f"{random.randint(100000, 999999)}",
+                "country": "India",
                 "price_per_consultation": random.randint(500, 2000),
                 "is_available": True,
             },
@@ -172,8 +84,10 @@ def generate_fixtures():
         profile_id += 1
 
     # Generate 15 patients
+    blood_groups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"]
+    allergies_list = ["None", "Dust Allergy", "Food Allergy", "Drug Allergy"]
+    conditions_list = ["None", "High Blood Pressure", "Diabetes", "Asthma"]
     for i in range(1, 16):
-        # Randomly choose gender for patient
         gender = random.choice(["male", "female"])
         if gender == "male":
             first_name = random.choice(male_first_names)
@@ -199,39 +113,22 @@ def generate_fixtures():
         }
         fixtures.append(patient)
 
-        # Patient Profile
-        blood_groups = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"]
-        areas = [
-            "Mohammadpur",
-            "Mirpur",
-            "Uttara",
-            "Dhanmondi",
-            "Gulshan",
-            "Banani",
-            "Badda",
-            "Khilgaon",
-        ]
-
         patient_profile = {
             "model": "accounts.profile",
             "pk": profile_id,
             "fields": {
                 "user": user_id,
-                "phone": f"+880185{i:07d}",
+                "phone": f"+91{random.randint(7000000000, 9999999999)}",
                 "dob": f"{random.randint(1970, 2000)}-{random.randint(1, 12):02d}-{random.randint(1, 28):02d}",
                 "gender": gender,
-                "address": f"Flat {random.randint(1,20)}A, House {random.randint(1, 99)}, Road {random.randint(1, 15)}, {random.choice(areas)}",
+                "address": f"Flat {random.randint(1,20)}A, House {random.randint(1, 99)}, {random.choice(areas)}, {random.choice(cities)}",
                 "city": random.choice(cities),
-                "state": random.choice(divisions),
-                "postal_code": f"{random.randint(1000, 9999)}",
-                "country": "Bangladesh",
+                "state": random.choice(states),
+                "postal_code": f"{random.randint(100000, 999999)}",
+                "country": "India",
                 "blood_group": random.choice(blood_groups),
-                "allergies": random.choice(
-                    ["None", "Dust Allergy", "Food Allergy", "Drug Allergy"]
-                ),
-                "medical_conditions": random.choice(
-                    ["None", "High Blood Pressure", "Diabetes", "Asthma"]
-                ),
+                "allergies": random.choice(allergies_list),
+                "medical_conditions": random.choice(conditions_list),
             },
         }
         fixtures.append(patient_profile)
