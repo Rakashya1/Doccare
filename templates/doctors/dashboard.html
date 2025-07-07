@@ -117,7 +117,7 @@
                                                         {{ appointment.status|title }}
                                                     </span>
                                                 </td>
-                                                <td class="text-center">৳{{ appointment.doctor.profile.price_per_consultation }}</td>
+                                                <td class="text-center">Rs.{{ appointment.doctor.profile.price_per_consultation }}</td>
                                                 <td>
                                                     <div class="table-action">
                                                         <a href="{% url 'doctors:appointment-detail' appointment.pk %}" class="btn btn-sm bg-info-light">
